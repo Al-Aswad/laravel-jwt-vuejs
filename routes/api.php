@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\AdminController;
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['namespace' => 'Api'], function () {
     Route::get('login', [AuthController::class, 'login']);
+    Route::get('check-token', [AuthController::class, 'checkToken']);
+    Route::get('logout', [AuthController::class, 'logout']);
+    Route::get('admin', [AdminController::class, 'index']);
 });
